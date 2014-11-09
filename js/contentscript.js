@@ -1,7 +1,4 @@
 // add bubble to the top of the page
-//var bubbleDOM = document.createElement('div');
-//bubbleDOM.setAttribute('class', 'selection_bubble');
-//document.body.appendChild(bubbleDOM);
 var speechBubble = document.createElement('div');
 speechBubble.setAttribute('class', 'triangle-isosceles');
 document.body.appendChild(speechBubble);
@@ -12,6 +9,31 @@ var apiNameString;
 var avgGPA = new Array();
 var avgStudyHours = new Array();
 var avgRcmndInstr = new Array();
+
+function createTable() {
+  var body = document.body,
+      tbl = document.createElement('table');
+  tbl.style.width = '350px';
+  tbl.style.height = '200px';
+  tbl.style.border = "1px solid white";
+
+  for(var i = 0; i < 4; i++) {
+    var tr = tbl.insertRow();
+    for(var j = 0; j < 6; j++) {
+      if(i == 3 && j == 6) {
+        break;
+      } else {
+        var td = tr.insertCell();
+        td.appendChild(document.createTextNode('Cell'));
+        td.style.border = '1px solid white';
+        if(i == 1 && j == 6) {
+          td.setAttribute('rowSpan', '6');
+        }
+      }
+    }
+  }
+  speechBubble.appendChild(tbl);
+}
 
 // listen to mouseup DOM events
 document.addEventListener('mouseup', function (e) {
@@ -30,12 +52,12 @@ document.addEventListener('mouseup', function (e) {
     kimonoCallback(httpGet(apiNameString))
     renderBubble(e.clientX, e.clientY, selection);
   }
+  // createTable();
 }, false);
 
 // close the bubble when we click on the screen
 document.addEventListener('mousedown', function (e) {
-  //bubbleDOM.style.visibility = 'hidden';
-    speechBubble.style.visibility = 'hidden';
+  speechBubble.style.visibility = 'hidden';
 }, false);
 
 // javascript way to perform a GET web request
@@ -51,12 +73,21 @@ function httpGet(theUrl)
 
 // move that bubble to the appropriate location
 function renderBubble(mouseX, mouseY, selection) {
+/*
 
   speechBubble.innerHTML = selection;
   speechBubble.style.top = mouseY  + 'px';
   speechBubble.style.left = mouseX + 'px';
   speechBubble.style.position = 'fixed';
-  speechBubble .style.visibility = 'visible';
+  speechBubble .style.visibility = 'visible';*/
+  speechBubble.innerHTML = selection;
+  var bubbleHeight = $('#speechBubble').height();
+  speechBubble.style.top = (mouseY - bubbleHeight - 100) + 'px';
+  /*speechBubble.style.top = mouseY  + 'px';*/
+  speechBubble.style.left = mouseX - 100 + 'px';
+  speechBubble.style.position = 'fixed';
+  alert("mouseX:" + mouseX + " mouseY: " + mouseY);
+  speechBubble.style.visibility = 'visible';
 }
 
 function kimonoCallback(data) {
