@@ -6,13 +6,6 @@ var speechBubble = document.createElement('div');
 speechBubble.setAttribute('class', 'triangle-isosceles');
 document.body.appendChild(speechBubble);
 
-
-var script = document.createElement('script');
-script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
-
-
 // listen to mouseup DOM events
 document.addEventListener('mouseup', function (e) {
   var selection = window.getSelection().toString();
