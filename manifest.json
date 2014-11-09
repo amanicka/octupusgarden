@@ -11,7 +11,7 @@
   },
   "content_scripts": [
   {
-    "matches": ["http://*/*", "https://*/*"],
+    "matches": ["http://*.ucsd.edu/*", "https://*.ucsd.edu/*"],
     "css": ["contentscript.css"],
     "js": ["contentscript.js"],
     "run_at": "document_end",
