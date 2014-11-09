@@ -11,7 +11,7 @@ function createTable() {
       tbl = document.createElement('table');
   tbl.style.width = '350px';
   tbl.style.height = '200px';
-  tbl.style.border = "1px solid black";
+  tbl.style.border = "1px solid white";
 
   for(var i = 0; i < 4; i++) {
     var tr = tbl.insertRow();
@@ -21,7 +21,7 @@ function createTable() {
       } else {
         var td = tr.insertCell();
         td.appendChild(document.createTextNode('Cell'));
-        td.style.border = '1px solid black';
+        td.style.border = '1px solid white';
         if(i == 1 && j == 6) {
           td.setAttribute('rowSpan', '6');
         }
@@ -37,7 +37,7 @@ document.addEventListener('mouseup', function (e) {
   if (selection.length > 0) {
     renderBubble(e.clientX, e.clientY, selection);
   }
-  createTable();
+  // createTable();
 }, false);
 
 // close the bubble when we click on the screen
