@@ -5,7 +5,9 @@
   "description": "This extension displays relevent information for UCSD CSE course selection.",
   "version": "1.0",
   "icons": {
-    "16": "icon.png"
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
   "content_scripts": [
   {
@@ -16,7 +18,7 @@
     "all_frames": true
   } ],
   "page_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon16.png",
     "default_title": "Octupus Garden",
     "popup": "popup.html"
   },
