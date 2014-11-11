@@ -103,7 +103,7 @@ function renderBubble(mouseX, mouseY, selection) {
   /*speechBubble.style.top = mouseY  + 'px';*/
   speechBubble.style.left = mouseX - 100 + 'px';
   speechBubble.style.position = 'fixed';
-  alert("mouseX:" + mouseX + " mouseY: " + mouseY);
+  //alert("mouseX:" + mouseX + " mouseY: " + mouseY);
   speechBubble.style.visibility = 'visible';
 }
 
