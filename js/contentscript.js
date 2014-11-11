@@ -9,6 +9,7 @@ var apiNameString;
 var avgGPA = new Array();
 var avgStudyHours = new Array();
 var avgRcmndInstr = new Array();
+var classNameArray = new Array(20);
 
 function createTable() {
   var body = document.body,
@@ -80,7 +81,23 @@ function renderBubble(mouseX, mouseY, selection) {
   speechBubble.style.left = mouseX + 'px';
   speechBubble.style.position = 'fixed';
   speechBubble .style.visibility = 'visible';*/
+
+
   speechBubble.innerHTML = selection;
+  var dataToDisplay;
+  for(var classCount = 0; classCount < 3; classCount++){
+    var className = classNameArray[classCount];
+    dataToDisplay = "Class Name: " + className + " Average GPA: " + 
+    (avgGPA[className]).toFixed(2) + " Average Study Hours: " + 
+    (avgStudyHours[className]).toFixed(2) + 
+    " Average Instructor Recommend: " + (avgRcmndInstr[className]).toFixed(2);
+    speechBubble.innerHTML += "</br> " + dataToDisplay;
+  }
+
+
+
+
+
   var bubbleHeight = $('#speechBubble').height();
   speechBubble.style.top = (mouseY - bubbleHeight - 100) + 'px';
   /*speechBubble.style.top = mouseY  + 'px';*/
@@ -96,7 +113,6 @@ function kimonoCallback(data) {
     var json = JSON.parse(data);
     
     var classCountArray = new Array();
-    var classNameArray = new Array(20);
     var rcmndInstrArray = new Array();
     var studyHrsArray = new Array();
     var gpaArray = new Array();
